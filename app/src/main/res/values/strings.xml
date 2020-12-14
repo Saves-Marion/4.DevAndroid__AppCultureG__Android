@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">ProjetAndroidTSP</string>
+    <!-- Main -->
+    <string name="text1_main">Bonjour %1$s bon jeu ! Tu as %2$d points.</string>
+    <string name="text1_main_inconnu">Bonjour étranger.</string>
+    <string name="text2_main">Le jeu est un quizz. Le but est d\'aller le plus loin possible dans les questions.</string>
+    <string name="bouton1_main">Votre profil</string>
+    <string name="bouton2_main">Jouer !</string>
+    <!-- profil -->
+    <string name="nom_profil">Nom</string>
+    <string name="prenom_profil">Prénom</string>
+    <string name="age_profil">Age</string>
+    <string name="avatar_profil">Avatar</string>
+    <!-- choix profil -->
+    <string name="bouton_choix_profil">Gérer</string>
+    <string name="bouton2_choix_profil">Retour</string>
+    <!-- créer profil -->
+    <string name="text_creer_profil">Créer un nouveau profil</string>
+    <string name="hint1_creer_profil">Saves</string>
+    <string name="hint2_creer_profil">Marion</string>
+    <string name="hint3_creer_profil">21</string>
+    <string name="bouton_creer_profil">Valider</string>
+    <!-- accéder profil -->
+    <!-- modifier profil -->
+    <string name="text_modifier_profil">Modifier le profil</string>
+    <string name="bouton_modifier_profil">Valider</string>
+    <!-- qsimple -->
+    <!-- qimage -->
+    <!-- qson -->
+    <!-- qtouch -->
+    <!-- qdragdrop -->
+    <!-- qboussole -->
+    <!-- gameover -->
+    <string name="text_gameover">GAME OVER</string>
+    <string name="button_gameover">Recommencer</string>
+    <!-- victoire -->
+    <string name="text_victoire">BRAVO vous avez bien répondu à %1$s / 10 questions!</string>
+    <string name="button_victoire">Recommencer</string>
+
+    <string-array name="categorie">
+        <item>Science</item>
+        <item>Animaux</item>
+        <item>Vehicules</item>
+        <item>Histoire_geo</item>
+        <item>Sports</item>
+        <item>Culture Général</item>
+        <item>Random</item>
+        <item>Divertissement</item>
+    </string-array>
+
+</resources>

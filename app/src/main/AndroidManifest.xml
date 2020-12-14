@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.projetandroidtsp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+            <activity android:name=".Controller.QShakeQuizzActivity" tools:ignore="Instantiatable" />
+            <activity android:name=".Controller.QSimpleBoolQuizzActivity"/>
+            <activity android:name=".Controller.MesparaActivity" />
+            <activity android:name=".Controller.ModifierProfilActivity"/>
+            <activity android:name=".Controller.QBoussoleQuizzActivity" />
+            <activity android:name=".Controller.QDragDropQuizzActivity" />
+            <activity android:name=".Controller.QImageQuizzActivity" />
+            <activity android:name=".Controller.QSimpleQuizzActivity" />
+            <activity android:name=".Controller.VictoireActivity" />
+            <activity android:name=".Controller.CreerProfilActivity" />
+            <activity android:name=".Controller.ChoixProfilActivity" />
+            <activity android:name=".Controller.MainActivity">
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+            </activity>
+    </application>
+</manifest>

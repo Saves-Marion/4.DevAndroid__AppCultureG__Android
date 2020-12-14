@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorViolet"
+    tools:context="com.example.projetandroidtsp.Controller.MainActivity">
+
+    <TextView
+        android:id="@+id/text1_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="4"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/colorBleu"
+        android:textSize="20dp"
+        android:text="@string/text1_main" />
+
+    <ImageView
+        android:id="@+id/image1_main"
+        android:layout_width="match_parent"
+        android:layout_height="358dp"
+        android:layout_weight="3"
+        android:src="@drawable/detec" />
+    <TextView
+        android:id="@+id/text2_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:textColor="@color/colorBleu"
+        android:text="@string/text2_main"/>
+    <Button
+        android:id="@+id/button1_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:background="@color/colorBleu"
+        android:textColor="@color/colorJaune"
+        android:text="@string/bouton1_main"/>
+
+    <Button
+        android:id="@+id/button2_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:background="@color/colorJaune"
+        android:textColor="@color/colorCerise"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:text="@string/bouton2_main"/>
+
+</LinearLayout>

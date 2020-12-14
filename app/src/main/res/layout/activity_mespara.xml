@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBleu"
+    tools:context="com.example.projetandroidtsp.Controller.MesparaActivity">
+
+    <TextView
+        android:background="@color/colorCyan"
+        android:textColor="@color/colorBleu"
+        android:text="Veuillez choisir la difficulté"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <RadioGroup
+        android:layout_weight="1"
+        android:id="@+id/radiodifficulte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:textColor="@color/colorCyan"
+            android:id="@+id/easy"
+            android:text="Easy"
+            android:layout_width="wrap_content"
+            android:checked="true"
+            android:layout_height="wrap_content"/>
+        <RadioButton
+            android:textColor="@color/colorCyan"
+            android:id="@+id/medium"
+            android:text="Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioButton
+            android:textColor="@color/colorCyan"
+            android:id="@+id/hard"
+            android:text="Hard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RadioGroup>
+
+    <TextView
+        android:background="@color/colorCyan"
+        android:textColor="@color/colorBleu"
+        android:text="Veuillez choisir le type de question"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <RadioGroup
+        android:layout_weight="1"
+        android:id="@+id/radiotype"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:textColor="@color/colorCyan"
+            android:id="@+id/multiple"
+            android:text="Choix Multiple"
+            android:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioButton
+            android:textColor="@color/colorCyan"
+            android:id="@+id/bool"
+            android:text="Vrai/Faux"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+<!--        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Les deux"/>-->
+    </RadioGroup>
+
+    <TextView
+        android:background="@color/colorCyan"
+        android:textColor="@color/colorBleu"
+        android:text="Veuillez choisir la catégorie"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Spinner
+        android:background="@color/colorCyan"
+        android:layout_weight="1"
+        android:id="@+id/categories"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="fill_parent"
+        android:ems="10"
+        android:layout_height="wrap_content"></Spinner>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorCyan"
+        android:text="Par default : easy, multiple, science"/>
+
+    <Button
+        android:layout_weight="1"
+        android:id="@+id/go"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorViolet"
+        android:text="Go"/>
+
+  </LinearLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorCyan"
+    tools:context="com.example.projetandroidtsp.Controller.ModifierProfilActivity">
+
+    <TextView
+        android:id="@+id/titre_modifier_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textColor="@color/colorCyan"
+        android:background="@color/colorBleu"
+        android:text="@string/text_modifier_profil"/>
+
+    <TextView
+        android:id="@+id/nom_modifier_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textColor="@color/colorBleu"
+        android:text="@string/nom_profil"/>
+    <EditText
+        android:id="@+id/rep_nom_modifier_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/nom_profil"/>
+
+    <TextView
+        android:id="@+id/prenom_modifier_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textColor="@color/colorBleu"
+        android:text="@string/prenom_profil"/>
+    <EditText
+        android:id="@+id/rep_prenom_modifier_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint="@string/prenom_profil"/>
+
+    <TextView
+        android:id="@+id/age_modifier_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textColor="@color/colorBleu"
+        android:text="@string/age_profil"/>
+    <EditText
+        android:id="@+id/rep_age_modifier_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:inputType="numberDecimal"
+        android:hint="@string/age_profil"/>
+
+    <TextView
+        android:id="@+id/pdp_modifier_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:textColor="@color/colorBleu"
+        android:text="@string/avatar_profil"/>
+    <ImageView
+        android:id="@+id/rep_pdp_modifier_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        tools:srcCompat="@tools:sample/avatars"/>
+
+    <Button
+        android:id="@+id/button_modifier_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/colorViolet"
+        android:textColor="@color/colorCerise"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:text="@string/bouton_creer_profil"/>
+
+</LinearLayout>

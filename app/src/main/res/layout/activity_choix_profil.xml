@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:textColor="@color/colorViolet"
+    tools:context="com.example.projetandroidtsp.Controller.ChoixProfilActivity">
+
+    <ListView
+        android:id="@+id/list_choix_profil"
+        android:layout_width="match_parent"
+        android:layout_height="169dp"
+        android:textSize="10dp"
+        android:layout_weight="3" />
+    <!--<WebView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/internet"/>-->
+
+    <Button
+        android:id="@+id/button1_choix_profil"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.1"
+        android:background="@color/colorBleu"
+        android:text="@string/bouton2_choix_profil"
+        android:textColor="@color/colorJaune" />
+    <Button
+        android:id="@+id/button2_choix_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/colorJaune"
+        android:textColor="@color/colorCerise"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:text="@string/bouton_choix_profil"/>
+</LinearLayout>
