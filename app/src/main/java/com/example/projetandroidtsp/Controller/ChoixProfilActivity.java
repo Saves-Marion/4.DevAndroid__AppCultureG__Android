@@ -8,10 +8,13 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.renderscript.AllocationAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +45,8 @@ public class ChoixProfilActivity extends AppCompatActivity {
     private ProfilDAO profilDAO;
     private Profil p;
 
+    SharedPreferences prefs;
+
     CategoriesAdapter cateadaptater;
     ArrayList<Categories> ctgrs=null;
 
@@ -65,13 +70,13 @@ public class ChoixProfilActivity extends AppCompatActivity {
         long id=0;
         p=profilDAO.selectionner(id);
         ctgrs.add(new Categories("Science", R.drawable.science, p.getNb_reussi_science()));
-        ctgrs.add(new Categories("Animaux", R.drawable.science,p.getNb_reussi_animaux()));
-        ctgrs.add(new Categories("Vehicules", R.drawable.science,p.getNb_reussi_vehicules()));
-        ctgrs.add(new Categories("Histoire_géo", R.drawable.science,p.getNb_reussi_histoire_geo()));
-        ctgrs.add(new Categories("Sport", R.drawable.science,p.getNb_reussi_sports()));
-        ctgrs.add(new Categories("Culture Générale", R.drawable.science,p.getNb_reussi_culture_g()));
-        ctgrs.add(new Categories("Random", R.drawable.science,p.getNb_reussi_random()));
-        ctgrs.add(new Categories("Divertissement", R.drawable.science,p.getNb_reussi_divertissement()));
+        ctgrs.add(new Categories("Animaux", R.drawable.animaux,p.getNb_reussi_animaux()));
+        ctgrs.add(new Categories("Vehicules", R.drawable.vehicules,p.getNb_reussi_vehicules()));
+        ctgrs.add(new Categories("Histoire_géo", R.drawable.histoiregeo,p.getNb_reussi_histoire_geo()));
+        ctgrs.add(new Categories("Sport", R.drawable.sport,p.getNb_reussi_sports()));
+        ctgrs.add(new Categories("Culture Générale", R.drawable.question,p.getNb_reussi_culture_g()));
+        ctgrs.add(new Categories("Random", R.drawable.aleatoire,p.getNb_reussi_random()));
+        ctgrs.add(new Categories("Divertissement", R.drawable.divertissement,p.getNb_reussi_divertissement()));
         cateadaptater = new CategoriesAdapter(getApplicationContext(), ctgrs);
         liste_categorie.setAdapter(cateadaptater);
 
@@ -106,15 +111,21 @@ public class ChoixProfilActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder(ChoixProfilActivity.this);
                         alertDialog.setTitle("Choisir le profil");
-                        String[] items=new String[MainActivity.nb_profil];
+
+                        final String[] items=new String[MainActivity.nb_profil];
                         for(int i=0;i<MainActivity.nb_profil;i++){
-                            items[i]=profilDAO.selectionner(i).getNom();
+                            long id=i;
+                            items[i]=profilDAO.selectionner(id).getNom();
                         }
+
                         alertDialog.setItems(items, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                prefs.edit().putInt("id", which).commit();
                             }
                         });
+
                         AlertDialog alert = alertDialog.create();
                         alert.setCanceledOnTouchOutside(true);
                         alert.show();
@@ -147,7 +158,7 @@ public class ChoixProfilActivity extends AppCompatActivity {
             convertView.setTag(viewHolder);
     }
         viewHolder.cate.setText(categories.getAppelation());
-        //viewHolder.img.setImageDrawable(Drawable);
+        viewHolder.img.setImageResource(categories.getImg());
         viewHolder.point.setText(categories.getNb_succes().toString());
         return convertView;
     }

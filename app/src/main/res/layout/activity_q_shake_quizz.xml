@@ -9,8 +9,11 @@
     tools:context=".Controller.QShakeQuizzActivity">
 
     <TextView
-        android:text="Shake the phone to detect to shake event"
-        android:textSize="24sp"
+        android:text="Secouer le téléphone"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:textColor="#000"
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

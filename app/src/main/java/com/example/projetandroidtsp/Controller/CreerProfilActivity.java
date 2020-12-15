@@ -125,8 +125,8 @@ public class CreerProfilActivity extends AppCompatActivity {
                 p.setAge(age);
                 profilDAO.ajouter(p);
                 prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                prefs.edit().putString("joueur", nom+" "+prenom).commit();
-                MainActivity.nb_profil++;
+                prefs.edit().putString("joueur", prenom).commit();
+                MainActivity.nb_profil=MainActivity.nb_profil+1;
                 finish();
             }
         });

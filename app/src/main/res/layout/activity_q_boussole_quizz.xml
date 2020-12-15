@@ -18,6 +18,15 @@
         android:textSize="40sp"
         android:textColor="#000"
         android:textStyle="bold"
+        android:text="Trouver le nord"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:textColor="#000"
+        android:textStyle="bold"
         android:text="0°"
         android:id="@+id/txt_azimuth"/>
 

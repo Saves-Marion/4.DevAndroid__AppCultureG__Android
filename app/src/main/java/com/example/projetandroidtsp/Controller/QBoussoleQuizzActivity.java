@@ -67,6 +67,7 @@ public class QBoussoleQuizzActivity extends AppCompatActivity implements SensorE
             mAzimuth = (int) (Math.toDegrees(SensorManager.getOrientation(rMat, orientation)[0]) + 360) % 360;
             if(mAzimuth==0) {
                 incr++;
+                reussi++;
                 if (incr==11){
                     Intent i = new Intent(getApplicationContext(),VictoireActivity.class);
                     i.putExtra("reussi",reussi);

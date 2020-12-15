@@ -62,8 +62,9 @@ public class QShakeQuizzActivity extends AppCompatActivity {
                 float delta = mAccelCurrent - mAccelLast;
                 mAccel = mAccel * 0.9f + delta;
                 if (mAccel > 12) {
-                    Toast.makeText(getApplicationContext(), "Shake event detected", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Bien secoué!", Toast.LENGTH_SHORT).show();
                     incr++;
+                    reussi++;
                     if (incr==11){
                         Intent i = new Intent(getApplicationContext(),VictoireActivity.class);
                         i.putExtra("reussi",reussi);

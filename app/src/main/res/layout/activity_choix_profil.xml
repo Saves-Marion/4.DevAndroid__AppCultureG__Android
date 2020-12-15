@@ -12,7 +12,7 @@
         android:id="@+id/list_choix_profil"
         android:layout_width="match_parent"
         android:layout_height="169dp"
-        android:textSize="10dp"
+        android:textSize="15dp"
         android:layout_weight="3" />
     <!--<WebView
         android:layout_width="match_parent"

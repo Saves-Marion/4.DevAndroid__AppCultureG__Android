@@ -1,5 +1,6 @@
 package com.example.projetandroidtsp;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -22,6 +23,10 @@ import java.util.ArrayList;
 
 public class AsyncJSONDataBool extends AsyncTask<String, Void, JSONObject> {
 
+    private Integer incr;
+    private Integer incrq;
+    private String[] quest;
+    private String[] reponses;
     private AppCompatActivity myActivity;
 
     public AsyncJSONDataBool(AppCompatActivity Activity) {
@@ -51,28 +56,25 @@ public class AsyncJSONDataBool extends AsyncTask<String, Void, JSONObject> {
         }
 
         JSONObject json = null;
+
         try {
             assert result != null;
             json = new JSONObject(result);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Log.i("lol","coucou"+json.toString());
-        return json; // returns the result
-    }
 
-    protected void onPostExecute(JSONObject json) {
-        String[] quest={"","","","","","","","","",""};
-        String[] reponses={"a", "a","a", "c", "e", "d", "f", "g", "h", "i", "j","b","c","d","b","c","d","b","c","d","b","c","d","b","c","d","b","c","d","b","c","d","b","c","d","b","c","d","b","c","d"};
+        quest= new String[]{"", "", "", "", "", "", "", "", "", ""};
+        reponses= new String[]{"a", "a", "a", "c", "e", "d", "f", "g", "h", "i", "j", "b", "c", "d", "b", "c", "d", "b", "c", "d", "b", "c", "d", "b", "c", "d", "b", "c", "d", "b", "c", "d", "b", "c", "d", "b", "c", "d", "b", "c", "d"};
         try {
             JSONArray items = json.getJSONArray("results");
             for (int i = 0; i<items.length(); i++)
             {
                 JSONObject item=items.getJSONObject(i);
+
                 String question =item.getString("question");
                 quest[i]=question;
 
-                Log.i("lol",question);
                 int j=i*2;
                 String rep =item.getString("correct_answer");
                 reponses[j]=rep;
@@ -81,32 +83,26 @@ public class AsyncJSONDataBool extends AsyncTask<String, Void, JSONObject> {
                 rep_f=rep_f.replace("]","");
                 rep_f=rep_f.replaceAll("\"","");
                 reponses[j+1]=rep_f;
-                //String item = items.getString(i);
-                //String[] itemm=item.split(",");
-
-                //String questionn=itemm[3];
-                //String[] q= questionn.split(":");
-                /*String question=q[1];
-                quest[i]=question;
-
-                int j=i*4;
-                String repp=itemm[4];
-                String[] r=repp.split(":");
-                //reponses[j]=r[0];
-                Log.i("lol",r[0].toString());
-
-                String repp1=itemm[5];
-                String[] re=repp1.split(":");
-                //reponses[j+1]=re[1];
-              //  reponses[j+2]=re[1];
-               // reponses[j+3]=re[1];*/
-
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        return json; // returns the result
+    }
+
+    protected void onPostExecute(JSONObject json) {
         MesparaActivity.questions =quest;
         MesparaActivity.reponses=reponses;
+        incr=0;
+        incrq=0;
+        Intent i=MesparaActivity.i;
+        i.putExtra("incr",incr);
+        i.putExtra("incrq",incrq);
+        i.putExtra("questions",quest);
+        i.putExtra("reponses",reponses);
+        i.putExtra("categorie",MesparaActivity.cate);
+        i.putExtra("reussi",0);
+        myActivity.startActivity(i);
     }
 
     private String readStream(InputStream is) {

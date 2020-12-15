@@ -2,7 +2,9 @@ package com.example.projetandroidtsp.Controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -25,10 +27,18 @@ public class ModifierProfilActivity extends AppCompatActivity {
     private ProfilDAO profilDAO;
     private Profil p;
 
+    SharedPreferences prefs;
+    String joueur;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modifier_profil);
+
+        profilDAO=new ProfilDAO(this);
+        profilDAO.open();
+
+        joueur =prefs.getString("joueur", "");
 
         edit_1 =(EditText) findViewById(R.id.rep_nom_modifier_profil);
         edit_2 =(EditText) findViewById(R.id.rep_prenom_modifier_profil);
@@ -38,9 +48,6 @@ public class ModifierProfilActivity extends AppCompatActivity {
         a=false;
         b=false;
         c=false;
-
-        profilDAO=new ProfilDAO(this);
-        profilDAO.open();
 
         edit_1.addTextChangedListener(new TextWatcher() {
 

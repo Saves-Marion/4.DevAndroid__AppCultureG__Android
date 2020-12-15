@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.projetandroidtsp.DataBaseProfil.ProfilDAO;
+import com.example.projetandroidtsp.Models.Profil;
 import com.example.projetandroidtsp.R;
 
 import java.util.prefs.Preferences;
@@ -21,10 +23,14 @@ public class MainActivity extends AppCompatActivity {
     Button b_2;
     TextView text_1;
     TextView text_2;
+    public static Integer nb_profil=0;
+    
     String joueur;
     SharedPreferences prefs;
-    public static Integer nb_profil=0;
-
+    
+    private ProfilDAO profilDAO;
+    private Profil p;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,21 +41,15 @@ public class MainActivity extends AppCompatActivity {
     text_1 =(TextView) findViewById(R.id.text1_main);
     text_2 =(TextView) findViewById(R.id.text2_main);
 
+    profilDAO=new ProfilDAO(this);
+    profilDAO.open();
     prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-    joueur =prefs.getString("joueur", null);
-    if (joueur==null) {
-            b_2.setClickable(false);
-            text_1.setText(R.string.text1_main_inconnu);
-        }
-    else {
-            b_2.setClickable(true);
-            text_1.setText(String.format(getString(R.string.text1_main), joueur, 0));
-        }
+    joueur =prefs.getString("joueur", "");
 
     b_1.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (joueur==null) {
+            if (joueur=="") {
                 Intent i = new Intent(getApplicationContext(),CreerProfilActivity.class);
                 startActivity(i);
             }
@@ -72,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
     public void onResume(){
         super.onResume();
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        joueur =prefs.getString("joueur", null);
-        if (joueur==null) {
+        joueur =prefs.getString("joueur", "");
+        if (joueur=="") {
             b_2.setClickable(false);
             text_1.setText(R.string.text1_main_inconnu);
         }
