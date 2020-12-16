@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     profilDAO=new ProfilDAO(this);
     profilDAO.open();
+
     prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
     joueur =prefs.getString("joueur", "");
 
