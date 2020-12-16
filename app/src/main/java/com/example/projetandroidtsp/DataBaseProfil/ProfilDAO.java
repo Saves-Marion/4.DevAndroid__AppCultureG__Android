@@ -3,6 +3,7 @@ package com.example.projetandroidtsp.DataBaseProfil;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.nfc.Tag;
 import android.util.Log;
 import android.widget.Toast;
@@ -38,6 +39,7 @@ public class ProfilDAO extends DAOBase{
     public void ajouter(Profil p) {
         // CODE
         ContentValues value = new ContentValues();
+        value.put(ProfilDAO.KEY, p.getId());
         value.put(ProfilDAO.NOM, p.getNom());
         value.put(ProfilDAO.PRENOM, p.getPrenom());
         value.put(ProfilDAO.AGE, p.getAge());
@@ -87,25 +89,47 @@ public class ProfilDAO extends DAOBase{
      * @param id l'identifiant du profil à récupérer
      */
     public Profil selectionner(long id) {
+        Log.i("JFL", "id=" + id);
         // CODE
         Profil p = new Profil(0,"","",0,0,0,0,0,0,0,0,0,0);
-        Cursor c = mDb.rawQuery("select * from " + TABLE_NAME + " where id =?", new String[]{"id"});
-        Log.i("lol","select " + "*" + " from " + TABLE_NAME + " where id =?");
-            c.moveToFirst();
-            p.setId(id);
-            p.setNom(c.getString(1));
-            p.setPrenom(c.getString(2));
-            p.setAge(c.getInt(3));
-            p.setNb_joue_total(c.getInt(4));
-            p.setNb_reussi_science(c.getInt(5));
-            p.setNb_reussi_animaux(c.getInt(6));
-            p.setNb_reussi_vehicules(c.getInt(7));
-            p.setNb_reussi_histoire_geo(c.getInt(8));
-            p.setNb_reussi_sports(c.getInt(9));
-            p.setNb_reussi_random(c.getInt(10));
-            p.setNb_reussi_culture_g(c.getInt(11));
-            p.setNb_reussi_divertissement(c.getInt(12));
-            c.close();
+        String req = "select * from " + TABLE_NAME + " where id=" + id;
+        Cursor c = mDb.rawQuery(req, null);
+        Log.i("JFL",req);
+            boolean a = c.moveToFirst();
+            if (a) {
+                p.setId(id);
+                p.setNom(c.getString(1));
+                p.setPrenom(c.getString(2));
+                p.setAge(c.getInt(3));
+                p.setNb_joue_total(c.getInt(4));
+                p.setNb_reussi_science(c.getInt(5));
+                p.setNb_reussi_animaux(c.getInt(6));
+                p.setNb_reussi_vehicules(c.getInt(7));
+                p.setNb_reussi_histoire_geo(c.getInt(8));
+                p.setNb_reussi_sports(c.getInt(9));
+                p.setNb_reussi_random(c.getInt(10));
+                p.setNb_reussi_culture_g(c.getInt(11));
+                p.setNb_reussi_divertissement(c.getInt(12));
+                c.close();
+            }
+            else
+            {
+                Log.i("JFL", "The profil does not exist: creating it !");
+                ajouter(p);
+            }
         return p;
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        mDb.execSQL(TABLE_CREATE);
+        Log.i("JFL", "Creating");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        Log.i("JFL", "Upgrading");
+        mDb.execSQL(TABLE_DROP);
+        onCreate(mDb);
     }
 }
