@@ -66,7 +66,7 @@ public class ChoixProfilActivity extends AppCompatActivity {
         profilDAO=new ProfilDAO(this);
         profilDAO.open();
 
-        ctgrs = new ArrayList<Categories>();
+        ctgrs = new ArrayList<>();
         long id=0;
         p=profilDAO.selectionner(id);
         ctgrs.add(new Categories("Science", R.drawable.science, p.getNb_reussi_science()));
@@ -111,7 +111,6 @@ public class ChoixProfilActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder(ChoixProfilActivity.this);
                         alertDialog.setTitle("Choisir le profil");
-
                         final String[] items=new String[MainActivity.nb_profil];
                         for(int i=0;i<MainActivity.nb_profil;i++){
                             long id=i;
@@ -122,7 +121,7 @@ public class ChoixProfilActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                                prefs.edit().putInt("id", which).commit();
+                                prefs.edit().putInt("id", which).apply();
                             }
                         });
 

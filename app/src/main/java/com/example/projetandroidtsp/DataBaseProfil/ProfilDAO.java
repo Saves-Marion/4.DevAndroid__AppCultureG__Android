@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.example.projetandroidtsp.Models.Profil;
 
 public class ProfilDAO extends DAOBase{
-    public static final String TABLE_NAME="profil";
+    public static final String TABLE_NAME="Profil";
     public static final String KEY="id";
     public static final String NOM="nom";
     public static final String PRENOM="prenom";
@@ -25,26 +25,13 @@ public class ProfilDAO extends DAOBase{
     public static final String PROFIL_NB_REUSSI_CULTURE_G="nb_reussi_culture_g";
     public static final String PROFIL_NB_REUSSI_DIVERTISSEMENT="nb_reussi_divertissement";
 
-    public static final String TABLE_CREATE="CREATE TABLE "+TABLE_NAME+" ( "+
-            KEY+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
-            NOM+" TEXT, "+
-            PRENOM+" TEXT, "+
-            AGE+" REAL, "+
-            PROFIL_NB_JOUE_TOTAL+" REAL, "+
-            PROFIL_NB_REUSSI_SCIENCE+" REAL, "+
-            PROFIL_NB_REUSSI_ANIMAUX+" REAL, " +
-            PROFIL_NB_REUSSI_VEHICULES+" REAL, " +
-            PROFIL_NB_REUSSI_HISTOIRE_GEO+" REAL, "+
-            PROFIL_NB_REUSSI_SPORTS+" REAL, "+
-            PROFIL_NB_REUSSI_RANDOM+" REAL, "+
-            PROFIL_NB_REUSSI_CULTURE_G+" REAL, "+
-            PROFIL_NB_REUSSI_DIVERTISSEMENT+" REAL ); ";
-    public static final String TABLE_DROP="DROP TABLE IF EXISTS "+TABLE_NAME+" ; ";
+    public static final String TABLE_CREATE="CREATE TABLE " + TABLE_NAME + " (" + KEY + " INTEGER PRIMARY KEY AUTOINCREMENT, " + NOM + " TEXT, " + PRENOM + " TEXT, " + AGE + " REAL, " + PROFIL_NB_JOUE_TOTAL + " REAL, " + PROFIL_NB_REUSSI_SCIENCE + " REAL, " + PROFIL_NB_REUSSI_ANIMAUX + " REAL, " + PROFIL_NB_REUSSI_VEHICULES + " REAL, " + PROFIL_NB_REUSSI_HISTOIRE_GEO + " REAL, " + PROFIL_NB_REUSSI_SPORTS + " REAL, " + PROFIL_NB_REUSSI_RANDOM + " REAL, " + PROFIL_NB_REUSSI_CULTURE_G + " REAL, " + PROFIL_NB_REUSSI_DIVERTISSEMENT + " REAL);";
+
+    public static final String TABLE_DROP="DROP TABLE IF EXISTS "+TABLE_NAME+";";
 
     public ProfilDAO(Context pContext) {
         super(pContext);
     }
-
     /**
      * @param p le profil à ajouter à la base
      */
@@ -102,8 +89,8 @@ public class ProfilDAO extends DAOBase{
     public Profil selectionner(long id) {
         // CODE
         Profil p = new Profil(0,"","",0,0,0,0,0,0,0,0,0,0);
-        Cursor c = mDb.rawQuery("select " + "*" + " from " + TABLE_NAME+" where id =?", new String[]{"id"});
-        if (c.getCount()>0) {
+        Cursor c = mDb.rawQuery("select * from " + TABLE_NAME + " where id =?", new String[]{"id"});
+        Log.i("lol","select " + "*" + " from " + TABLE_NAME + " where id =?");
             c.moveToFirst();
             p.setId(id);
             p.setNom(c.getString(1));
@@ -119,7 +106,6 @@ public class ProfilDAO extends DAOBase{
             p.setNb_reussi_culture_g(c.getInt(11));
             p.setNb_reussi_divertissement(c.getInt(12));
             c.close();
-        }
         return p;
     }
 }

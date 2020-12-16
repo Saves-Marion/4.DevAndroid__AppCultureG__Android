@@ -55,7 +55,6 @@ public class QSimpleQuizzActivity extends AppCompatActivity {
         reussi=i.getIntExtra("reussi", -1);
         categorie=i.getStringExtra("categorie");
 
-        Log.i("lol",String.valueOf(incrq>8));
         Random random = new Random();
         nb = 1+random.nextInt(4);
 
@@ -91,257 +90,89 @@ public class QSimpleQuizzActivity extends AppCompatActivity {
                 b_4.setText(reponses[incr]);
             }
 
+            b_1.setOnClickListener(new OnClickSimple(nb,1,b_1));
+            b_2.setOnClickListener(new OnClickSimple(nb,2,b_2));
+            b_3.setOnClickListener(new OnClickSimple(nb,3,b_3));
+            b_4.setOnClickListener(new OnClickSimple(nb,4,b_4));
+
+    }
+
+    public class OnClickSimple implements View.OnClickListener{
+
+        Integer nombre;
+        Integer numero_bouton;
+        Button b;
+        public OnClickSimple(Integer nombre,Integer numero_bouton,Button b){
+            this.nombre=nombre;
+            this.numero_bouton=numero_bouton;
+            this.b=b;
+        }
+
+        @Override
+        public void onClick(View v) {
             Random random1 = new Random();
             final Integer nb1;
             nb1 = 1+random1.nextInt(15);
 
-            b_1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (nb==1){
-                        b_1.setBackgroundResource(green);
-                        reussi=reussi+1;
-                    }
-                    else  {
-                        b_1.setBackgroundResource(R.color.red);
-                    }
-                    incrq=incrq+1;
-                    incr=incr+4;
-                    if (incrq>9){
-                        Intent j = new Intent(getApplicationContext(),VictoireActivity.class);
-                        j.putExtra("reussi",reussi);
-                        j.putExtra("categorie",categorie);
-                        startActivity(j);
-                    }
-                    if (MesparaActivity.cate1==0 && nb1==1){
-                        Intent i = new Intent(getApplicationContext(),QBoussoleQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    else if (MesparaActivity.cate1==0 && nb1==5){
-                        Intent i = new Intent(getApplicationContext(),QShakeQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    else if (MesparaActivity.cate1==0 && nb1==10){
-                        Intent i = new Intent(getApplicationContext(),QDragDropQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    else {
-                        Intent i = new Intent(getApplicationContext(),QSimpleQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    finish();
-                }
-            });
-            b_3.setOnClickListener(new View.OnClickListener() {
-                @SuppressLint("ResourceAsColor")
-                @Override
-                public void onClick(View v) {
-                    if (nb==3){
-                        b_3.setBackgroundResource(green);
-                        reussi++;
-                    }
-                    else  {
-                        b_3.setBackgroundResource(R.color.red);
-                    }
-                    incrq=incrq+1;
-                    incr=incr+4;
-                    if (incrq>9){
-                        Intent j = new Intent(getApplicationContext(),VictoireActivity.class);
-                        j.putExtra("reussi",reussi);
-                        j.putExtra("categorie",categorie);
-                        startActivity(j);
-                    }
-                    if (MesparaActivity.cate1==0 && nb1==1){
-                        Intent i = new Intent(getApplicationContext(),QBoussoleQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    else if (MesparaActivity.cate1==0 && nb1==5){
-                        Intent i = new Intent(getApplicationContext(),QShakeQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    else if (MesparaActivity.cate1==0 && nb1==10){
-                        Intent i = new Intent(getApplicationContext(),QDragDropQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    else {
-                        Intent i = new Intent(getApplicationContext(),QSimpleQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    finish();
-                }
-            });
+            if (nombre.equals(numero_bouton)){
+                b.setBackgroundResource(green);
+                reussi++;
+            }
+            else  {
+                b.setBackgroundResource(R.color.red);
+            }
 
-            b_4.setOnClickListener(new View.OnClickListener() {
-                @SuppressLint("ResourceAsColor")
-                @Override
-                public void onClick(View v) {
-                    if (nb==4){
-                        b_4.setBackgroundResource(green);
-                        reussi++;
-                    }
-                    else  {
-                        b_4.setBackgroundResource(R.color.red);
-                    }
-                    incrq=incrq+1;
-                    incr=incr+4;
-                    if (incrq>9){
-                        Intent j = new Intent(getApplicationContext(),VictoireActivity.class);
-                        j.putExtra("reussi",reussi);
-                        j.putExtra("categorie",categorie);
-                        startActivity(j);
-                    }
-                    if (MesparaActivity.cate1==0 && nb1==1){
-                        Intent i = new Intent(getApplicationContext(),QBoussoleQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    else if (MesparaActivity.cate1==0 && nb1==5){
-                        Intent i = new Intent(getApplicationContext(),QShakeQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    else if (MesparaActivity.cate1==0 && nb1==10){
-                        Intent i = new Intent(getApplicationContext(),QDragDropQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    else {
-                        Intent i = new Intent(getApplicationContext(),QSimpleQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    finish();
+            incrq=incrq+1;
+            incr=incr+4;
+            if (incrq>9){
+                Intent j = new Intent(getApplicationContext(),VictoireActivity.class);
+                j.putExtra("reussi",reussi);
+                j.putExtra("categorie",categorie);
+                startActivity(j);
+            }
+            else{
+                if (MesparaActivity.cate1==0 && nb1==1){
+                    Intent i = new Intent(getApplicationContext(),QBoussoleQuizzActivity.class);
+                    i.putExtra("incr",incr);
+                    i.putExtra("incrq",incrq);
+                    i.putExtra("questions",questions);
+                    i.putExtra("reponses",reponses);
+                    i.putExtra("categorie",categorie);
+                    i.putExtra("reussi",reussi);
+                    startActivity(i);
                 }
-            });
-            b_2.setOnClickListener(new View.OnClickListener() {
-                @SuppressLint("ResourceAsColor")
-                @Override
-                public void onClick(View v) {
-                    if (nb==2){
-                        b_2.setBackgroundResource(green);
-                        reussi++;
-                    }
-                    else  {
-                        b_2.setBackgroundResource(R.color.red);
-                    }
-                    incrq=incrq+1;
-                    incr=incr+4;
-                    if (incrq>9){
-                        Intent j = new Intent(getApplicationContext(),VictoireActivity.class);
-                        j.putExtra("reussi",reussi);
-                        j.putExtra("categorie",categorie);
-                        startActivity(j);
-                    }
-                    if (MesparaActivity.cate1==0 && nb1==1){
-                        Intent i = new Intent(getApplicationContext(),QBoussoleQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    else if (MesparaActivity.cate1==0 && nb1==5){
-                        Intent i = new Intent(getApplicationContext(),QShakeQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    else if (MesparaActivity.cate1==0 && nb1==10){
-                        Intent i = new Intent(getApplicationContext(),QDragDropQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    else {
-                        Intent i = new Intent(getApplicationContext(),QSimpleQuizzActivity.class);
-                        i.putExtra("incr",incr);
-                        i.putExtra("incrq",incrq);
-                        i.putExtra("questions",questions);
-                        i.putExtra("reponses",reponses);
-                        i.putExtra("categorie",categorie);
-                        i.putExtra("reussi",reussi);
-                        startActivity(i);
-                    }
-                    finish();
+                else if (MesparaActivity.cate1==0 && nb1==5){
+                    Intent i = new Intent(getApplicationContext(),QShakeQuizzActivity.class);
+                    i.putExtra("incr",incr);
+                    i.putExtra("incrq",incrq);
+                    i.putExtra("questions",questions);
+                    i.putExtra("reponses",reponses);
+                    i.putExtra("categorie",categorie);
+                    i.putExtra("reussi",reussi);
+                    startActivity(i);
                 }
-            });
+                else if (MesparaActivity.cate1==0 && nb1==10){
+                    Intent i = new Intent(getApplicationContext(),QDragDropQuizzActivity.class);
+                    i.putExtra("incr",incr);
+                    i.putExtra("incrq",incrq);
+                    i.putExtra("questions",questions);
+                    i.putExtra("reponses",reponses);
+                    i.putExtra("categorie",categorie);
+                    i.putExtra("reussi",reussi);
+                    startActivity(i);
+                }
+                else {
+                    Intent i = new Intent(getApplicationContext(),QSimpleQuizzActivity.class);
+                    i.putExtra("incr",incr);
+                    i.putExtra("incrq",incrq);
+                    i.putExtra("questions",questions);
+                    i.putExtra("reponses",reponses);
+                    i.putExtra("categorie",categorie);
+                    i.putExtra("reussi",reussi);
+                    startActivity(i);
+                }
+            }
+            finish();
+        }
     }
 }

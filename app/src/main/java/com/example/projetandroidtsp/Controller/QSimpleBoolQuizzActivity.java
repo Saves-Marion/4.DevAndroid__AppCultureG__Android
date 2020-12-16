@@ -72,20 +72,21 @@ public class QSimpleBoolQuizzActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (nb==1){
-                    b_1.setBackgroundColor(green);
+                    b_1.setBackgroundResource(green);
                     reussi=reussi+1;
                 }
                 else  {
-                    b_1.setBackgroundColor(R.color.red);
+                    b_1.setBackgroundResource(R.color.red);
                 }
-                incrq++;
+                incrq=incrq+1;
                 incr=incr+2;
                 if (incrq==9){
-                    Intent i = new Intent(getApplicationContext(),VictoireActivity.class);
-                    i.putExtra("reussi",reussi);
-                    startActivity(i);
+                    Intent j = new Intent(getApplicationContext(),VictoireActivity.class);
+                    j.putExtra("reussi",reussi);
+                    j.putExtra("categorie",categorie);
+                    startActivity(j);
                 }
-                if (categorie=="Random" && nb1==1){
+                if (MesparaActivity.cate1==0 && nb1==1){
                     Intent i = new Intent(getApplicationContext(),QBoussoleQuizzActivity.class);
                     i.putExtra("incr",incr);
                     i.putExtra("incrq",incrq);
@@ -95,7 +96,7 @@ public class QSimpleBoolQuizzActivity extends AppCompatActivity {
                     i.putExtra("reussi",reussi);
                     startActivity(i);
                 }
-                else if (categorie=="Random" && nb1==5){
+                else if (MesparaActivity.cate1==0 && nb1==5){
                     Intent i = new Intent(getApplicationContext(),QShakeQuizzActivity.class);
                     i.putExtra("incr",incr);
                     i.putExtra("incrq",incrq);
@@ -115,6 +116,7 @@ public class QSimpleBoolQuizzActivity extends AppCompatActivity {
                     i.putExtra("reussi",reussi);
                     startActivity(i);
                 }
+                finish();
             }
         });
         b_2.setOnClickListener(new View.OnClickListener() {
@@ -122,21 +124,22 @@ public class QSimpleBoolQuizzActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (nb==2){
-                    b_2.setBackgroundColor(green);
+                    b_2.setBackgroundResource(green);
                     reussi++;
                 }
                 else  {
-                    b_2.setBackgroundColor(R.color.red);
+                    b_2.setBackgroundResource(R.color.red);
                 }
-                incrq++;
+                incrq=incrq+1;
                 incr=incr+2;
                 if (incrq==9){
-                    Intent i = new Intent(getApplicationContext(),VictoireActivity.class);
-                    i.putExtra("reussi",reussi);
-                    startActivity(i);
+                    Intent j = new Intent(getApplicationContext(),VictoireActivity.class);
+                    j.putExtra("reussi",reussi);
+                    j.putExtra("categorie",categorie);
+                    startActivity(j);
                 }
 
-                if (categorie=="Random" && nb1==1){
+                if (MesparaActivity.cate1==0  && nb1==1){
                     Intent i = new Intent(getApplicationContext(),QBoussoleQuizzActivity.class);
                     i.putExtra("incr",incr);
                     i.putExtra("incrq",incrq);
@@ -146,7 +149,7 @@ public class QSimpleBoolQuizzActivity extends AppCompatActivity {
                     i.putExtra("reussi",reussi);
                     startActivity(i);
                 }
-                else if (categorie=="Random" && nb1==5){
+                else if (MesparaActivity.cate1==0  && nb1==5){
                     Intent i = new Intent(getApplicationContext(),QShakeQuizzActivity.class);
                     i.putExtra("incr",incr);
                     i.putExtra("incrq",incrq);
@@ -166,6 +169,7 @@ public class QSimpleBoolQuizzActivity extends AppCompatActivity {
                     i.putExtra("reussi",reussi);
                     startActivity(i);
                 }
+                finish();
             }
         });
     }

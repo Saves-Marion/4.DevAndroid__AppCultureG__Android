@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     b_1.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (joueur=="") {
+            if (joueur.equals("")) {
                 Intent i = new Intent(getApplicationContext(),CreerProfilActivity.class);
                 startActivity(i);
             }
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         joueur =prefs.getString("joueur", "");
-        if (joueur=="") {
+        if (joueur.equals("")) {
             b_2.setClickable(false);
             text_1.setText(R.string.text1_main_inconnu);
         }
