@@ -63,82 +63,43 @@ public class QSimpleBoolQuizzActivity extends AppCompatActivity {
             b_2.setText(reponses[incr]);
         }
 
-        Random random1 = new Random();
-        final Integer nb1;
-        nb1 = 1+random1.nextInt(15);
+        b_1.setOnClickListener(new OnClickSimple(nb,1,b_1));
+        b_2.setOnClickListener(new OnClickSimple(nb,2,b_2));
+    }
 
-        b_1.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceAsColor")
-            @Override
-            public void onClick(View v) {
-                if (nb==1){
-                    b_1.setBackgroundResource(green);
-                    reussi=reussi+1;
-                }
-                else  {
-                    b_1.setBackgroundResource(R.color.red);
-                }
-                incrq=incrq+1;
-                incr=incr+2;
-                if (incrq==9){
-                    Intent j = new Intent(getApplicationContext(),VictoireActivity.class);
-                    j.putExtra("reussi",reussi);
-                    j.putExtra("categorie",categorie);
-                    startActivity(j);
-                }
-                if (MesparaActivity.cate1==0 && nb1==1){
-                    Intent i = new Intent(getApplicationContext(),QBoussoleQuizzActivity.class);
-                    i.putExtra("incr",incr);
-                    i.putExtra("incrq",incrq);
-                    i.putExtra("questions",questions);
-                    i.putExtra("reponses",reponses);
-                    i.putExtra("categorie",categorie);
-                    i.putExtra("reussi",reussi);
-                    startActivity(i);
-                }
-                else if (MesparaActivity.cate1==0 && nb1==5){
-                    Intent i = new Intent(getApplicationContext(),QShakeQuizzActivity.class);
-                    i.putExtra("incr",incr);
-                    i.putExtra("incrq",incrq);
-                    i.putExtra("questions",questions);
-                    i.putExtra("reponses",reponses);
-                    i.putExtra("categorie",categorie);
-                    i.putExtra("reussi",reussi );
-                    startActivity(i);
-                }
-                else {
-                    Intent i = new Intent(getApplicationContext(),QSimpleBoolQuizzActivity.class);
-                    i.putExtra("incr",incr);
-                    i.putExtra("incrq",incrq);
-                    i.putExtra("questions",questions);
-                    i.putExtra("reponses",reponses);
-                    i.putExtra("categorie",categorie);
-                    i.putExtra("reussi",reussi);
-                    startActivity(i);
-                }
-                finish();
+    public class OnClickSimple implements View.OnClickListener{
+
+        Integer nombre;
+        Integer numero_bouton;
+        Button b;
+        public OnClickSimple(Integer nombre,Integer numero_bouton,Button b){
+            this.nombre=nombre;
+            this.numero_bouton=numero_bouton;
+            this.b=b;
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (nombre==numero_bouton){
+                b.setBackgroundResource(green);
+                reussi++;
             }
-        });
-        b_2.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("ResourceAsColor")
-            @Override
-            public void onClick(View v) {
-                if (nb==2){
-                    b_2.setBackgroundResource(green);
-                    reussi++;
-                }
-                else  {
-                    b_2.setBackgroundResource(R.color.red);
-                }
-                incrq=incrq+1;
-                incr=incr+2;
-                if (incrq==9){
-                    Intent j = new Intent(getApplicationContext(),VictoireActivity.class);
-                    j.putExtra("reussi",reussi);
-                    j.putExtra("categorie",categorie);
-                    startActivity(j);
-                }
-
+            else  {
+                b.setBackgroundResource(R.color.red);
+            }
+            Random random1 = new Random();
+            final Integer nb1;
+            nb1 = 1+random1.nextInt(15);
+            incrq=incrq+1;
+            incr=incr+2;
+            if (incrq>9){
+                Intent j = new Intent(getApplicationContext(),VictoireActivity.class);
+                j.putExtra("reussi",reussi);
+                j.putExtra("categorie",categorie);
+                startActivity(j);
+                return;
+            }
+            else{
                 if (MesparaActivity.cate1==0  && nb1==1){
                     Intent i = new Intent(getApplicationContext(),QBoussoleQuizzActivity.class);
                     i.putExtra("incr",incr);
@@ -171,6 +132,6 @@ public class QSimpleBoolQuizzActivity extends AppCompatActivity {
                 }
                 finish();
             }
-        });
+        }
     }
 }

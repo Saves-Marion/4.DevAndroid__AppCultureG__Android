@@ -37,7 +37,6 @@ public class ProfilDAO extends DAOBase{
      * @param p le profil à ajouter à la base
      */
     public void ajouter(Profil p) {
-        // CODE
         ContentValues value = new ContentValues();
         value.put(ProfilDAO.KEY, p.getId());
         value.put(ProfilDAO.NOM, p.getNom());
@@ -81,20 +80,17 @@ public class ProfilDAO extends DAOBase{
         value.put(ProfilDAO.PROFIL_NB_REUSSI_RANDOM, p.getNb_reussi_random());
         value.put(ProfilDAO.PROFIL_NB_REUSSI_CULTURE_G, p.getNb_reussi_culture_g());
         value.put(ProfilDAO.PROFIL_NB_REUSSI_DIVERTISSEMENT, p.getNb_reussi_divertissement());
+        value.get("id");
         mDb.update(TABLE_NAME, value, KEY  + " = ?", new String[] {String.valueOf(p.getId())});
-
     }
 
     /**
      * @param id l'identifiant du profil à récupérer
      */
     public Profil selectionner(long id) {
-        Log.i("JFL", "id=" + id);
-        // CODE
         Profil p = new Profil(0,"","",0,0,0,0,0,0,0,0,0,0);
         String req = "select * from " + TABLE_NAME + " where id=" + id;
         Cursor c = mDb.rawQuery(req, null);
-        Log.i("JFL",req);
             boolean a = c.moveToFirst();
             if (a) {
                 p.setId(id);

@@ -38,8 +38,6 @@ public class ModifierProfilActivity extends AppCompatActivity {
         profilDAO=new ProfilDAO(this);
         profilDAO.open();
 
-        joueur =prefs.getString("joueur", "");
-
         edit_1 =(EditText) findViewById(R.id.rep_nom_modifier_profil);
         edit_2 =(EditText) findViewById(R.id.rep_prenom_modifier_profil);
         edit_3 =(EditText) findViewById(R.id.rep_age_modifier_profil);
@@ -49,8 +47,11 @@ public class ModifierProfilActivity extends AppCompatActivity {
         b=false;
         c=false;
 
-        edit_1.addTextChangedListener(new TextWatcher() {
+        edit_1.setText(profilDAO.selectionner(MainActivity.n_joueur).getNom());
+        edit_2.setText(profilDAO.selectionner(MainActivity.n_joueur).getPrenom());
+        edit_3.setText(profilDAO.selectionner(MainActivity.n_joueur).getAge().toString());
 
+        edit_1.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {}
 
@@ -69,8 +70,8 @@ public class ModifierProfilActivity extends AppCompatActivity {
                 if(a & b & c) b_1.setClickable(true);
             }
         });
-        edit_2.addTextChangedListener(new TextWatcher() {
 
+        edit_2.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {}
 
@@ -89,7 +90,6 @@ public class ModifierProfilActivity extends AppCompatActivity {
             }
         });
         edit_3.addTextChangedListener(new TextWatcher() {
-
             @Override
             public void afterTextChanged(Editable s) {}
 
@@ -111,7 +111,7 @@ public class ModifierProfilActivity extends AppCompatActivity {
         b_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                p=profilDAO.selectionner(0);
+                p=profilDAO.selectionner(MainActivity.n_joueur);
                 String nom=edit_1.getText().toString();
                 String prenom=edit_2.getText().toString();
                 Integer age=Integer.getInteger(edit_3.getText().toString());
@@ -119,6 +119,8 @@ public class ModifierProfilActivity extends AppCompatActivity {
                 p.setPrenom(prenom);
                 p.setAge(age);
                 profilDAO.modifier(p);
+                prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                prefs.edit().putString("joueur", prenom).commit();
                 finish();
             }
         });

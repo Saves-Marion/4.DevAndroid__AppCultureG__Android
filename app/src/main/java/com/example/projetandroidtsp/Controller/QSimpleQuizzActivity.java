@@ -34,7 +34,7 @@ public class QSimpleQuizzActivity extends AppCompatActivity {
     Integer incrq;
     String[] questions;
     String[] reponses;
-    String categorie;
+    int categorie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class QSimpleQuizzActivity extends AppCompatActivity {
         questions = i.getStringArrayExtra("questions");
         reponses = i.getStringArrayExtra("reponses");
         reussi=i.getIntExtra("reussi", -1);
-        categorie=i.getStringExtra("categorie");
+        categorie=i.getIntExtra("categorie",0);
 
         Random random = new Random();
         nb = 1+random.nextInt(4);
@@ -151,6 +151,7 @@ public class QSimpleQuizzActivity extends AppCompatActivity {
                     i.putExtra("reussi",reussi);
                     startActivity(i);
                 }
+                /*
                 else if (MesparaActivity.cate1==0 && nb1==10){
                     Intent i = new Intent(getApplicationContext(),QDragDropQuizzActivity.class);
                     i.putExtra("incr",incr);
@@ -160,7 +161,7 @@ public class QSimpleQuizzActivity extends AppCompatActivity {
                     i.putExtra("categorie",categorie);
                     i.putExtra("reussi",reussi);
                     startActivity(i);
-                }
+                }*/
                 else {
                     Intent i = new Intent(getApplicationContext(),QSimpleQuizzActivity.class);
                     i.putExtra("incr",incr);

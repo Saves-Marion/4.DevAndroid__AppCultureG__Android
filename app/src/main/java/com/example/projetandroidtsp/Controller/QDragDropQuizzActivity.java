@@ -22,6 +22,7 @@ import com.example.projetandroidtsp.R;
 
 public class QDragDropQuizzActivity extends AppCompatActivity {
 
+    //Fonctionne mouvement mais pas encore implemente les questions et cond de fin
     private Button rep1;
     private Button rep2;
     private Button rep3;

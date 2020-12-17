@@ -1,5 +1,7 @@
 package com.example.projetandroidtsp.Controller;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,10 +10,13 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.projetandroidtsp.DataBaseProfil.ProfilDAO;
 import com.example.projetandroidtsp.Models.Profil;
@@ -24,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
     Button b_2;
     TextView text_1;
     TextView text_2;
-    public static Integer nb_profil=0;
-    
+    public static Integer nb_profil;
+    public static Integer n_joueur;
     String joueur;
     SharedPreferences prefs;
     
@@ -47,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
     prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
     joueur =prefs.getString("joueur", "");
+    nb_profil=prefs.getInt("nb_profil",0);
+    n_joueur=prefs.getInt("n_joueur",0);
+
 
     b_1.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -83,5 +91,21 @@ public class MainActivity extends AppCompatActivity {
             b_2.setClickable(true);
             text_1.setText(String.format(getString(R.string.text1_main), joueur, 0));
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_settings:
+                Intent i = new Intent(getApplicationContext(),InfoActivity.class);
+                startActivity(i);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -67,8 +67,7 @@ public class ChoixProfilActivity extends AppCompatActivity {
         profilDAO.open();
 
         ctgrs = new ArrayList<>();
-        long id=0;
-        p=profilDAO.selectionner(id);
+        p=profilDAO.selectionner(MainActivity.n_joueur);
         ctgrs.add(new Categories("Science", R.drawable.science, p.getNb_reussi_science()));
         ctgrs.add(new Categories("Animaux", R.drawable.animaux,p.getNb_reussi_animaux()));
         ctgrs.add(new Categories("Vehicules", R.drawable.vehicules,p.getNb_reussi_vehicules()));
@@ -114,7 +113,7 @@ public class ChoixProfilActivity extends AppCompatActivity {
                         final String[] items=new String[MainActivity.nb_profil];
                         for(int i=0;i<MainActivity.nb_profil;i++){
                             long id=i;
-                            items[i]=profilDAO.selectionner(id).getNom();
+                            items[i]=profilDAO.selectionner(id).getNom()+" "+profilDAO.selectionner(id).getPrenom();
                         }
 
                         alertDialog.setItems(items, new DialogInterface.OnClickListener() {
@@ -122,6 +121,9 @@ public class ChoixProfilActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                                 prefs.edit().putInt("id", which).apply();
+                                prefs.edit().putString("joueur",profilDAO.selectionner(which).getPrenom()).commit();
+                                MainActivity.n_joueur=which;
+                                prefs.edit().putInt("n_joueur",MainActivity.n_joueur).commit();
                             }
                         });
 

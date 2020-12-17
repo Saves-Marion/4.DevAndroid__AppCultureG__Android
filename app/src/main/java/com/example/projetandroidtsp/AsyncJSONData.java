@@ -101,7 +101,7 @@ public class AsyncJSONData extends AsyncTask<String, Void, JSONObject> {
         i.putExtra("incrq",incrq);
         i.putExtra("questions",quest);
         i.putExtra("reponses",reponses);
-        i.putExtra("categorie",MesparaActivity.cate);
+        i.putExtra("categorie",MesparaActivity.cate1);
         i.putExtra("reussi",0);
         myActivity.startActivity(i);
     }

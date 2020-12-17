@@ -120,6 +120,7 @@ public class CreerProfilActivity extends AppCompatActivity {
                 if(age!=null && age>500){
                     Toast.makeText(getApplicationContext(),"Vous êtes trop vieux pour jouer attention",Toast.LENGTH_LONG).show();
                 }
+                p.setId(MainActivity.nb_profil);
                 p.setNom(nom);
                 p.setPrenom(prenom);
                 p.setAge(age);
@@ -127,6 +128,9 @@ public class CreerProfilActivity extends AppCompatActivity {
                 prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 prefs.edit().putString("joueur", prenom).commit();
                 MainActivity.nb_profil=MainActivity.nb_profil+1;
+                prefs.edit().putInt("nb_profil",MainActivity.nb_profil).commit();
+                MainActivity.n_joueur=MainActivity.nb_profil;
+                prefs.edit().putInt("n_joueur",MainActivity.n_joueur).commit();
                 finish();
             }
         });
