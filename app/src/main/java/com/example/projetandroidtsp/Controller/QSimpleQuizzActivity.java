@@ -129,6 +129,7 @@ public class QSimpleQuizzActivity extends AppCompatActivity {
                 j.putExtra("reussi",reussi);
                 j.putExtra("categorie",categorie);
                 startActivity(j);
+                return;
             }
             else{
                 if (MesparaActivity.cate1==0 && nb1==1){

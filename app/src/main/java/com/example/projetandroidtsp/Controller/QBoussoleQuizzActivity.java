@@ -34,11 +34,13 @@ public class QBoussoleQuizzActivity extends AppCompatActivity implements SensorE
     private boolean mLastMagnetometerSet = false;
 
     Integer incr;
+    Integer incrq;
     String[] questions;
     String[] reponses;
     String[] reponses_j;
     Integer reussi;
-    String categorie;
+    int categorie;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +55,11 @@ public class QBoussoleQuizzActivity extends AppCompatActivity implements SensorE
 
         Intent i = getIntent();
         incr = i.getIntExtra("incr", 0);
+        incrq = i.getIntExtra("incrq", 0);
         questions = i.getStringArrayExtra("questions");
         reponses = i.getStringArrayExtra("reponses");
-        reponses_j = i.getStringArrayExtra("reponses_j");
-        reussi=i.getIntExtra("reussi", 0);
-        categorie=i.getStringExtra("categorie");
+        reussi=i.getIntExtra("reussi", -1);
+        categorie=i.getIntExtra("categorie",0);
     }
 
     @Override
@@ -65,23 +67,28 @@ public class QBoussoleQuizzActivity extends AppCompatActivity implements SensorE
         if (event.sensor.getType() == Sensor.TYPE_ROTATION_VECTOR) {
             SensorManager.getRotationMatrixFromVector(rMat, event.values);
             mAzimuth = (int) (Math.toDegrees(SensorManager.getOrientation(rMat, orientation)[0]) + 360) % 360;
+
             if(mAzimuth==0) {
-                incr++;
-                reussi++;
-                if (incr==11){
+                incrq++;
+                incr=incr+4;
+                if (incrq>9){
                     Intent i = new Intent(getApplicationContext(),VictoireActivity.class);
                     i.putExtra("reussi",reussi);
+                    i.putExtra("categorie",categorie);
                     startActivity(i);
+                    return;
                 }
                 else{
                     Intent i = new Intent(getApplicationContext(),QSimpleQuizzActivity.class);
                     i.putExtra("incr",incr);
+                    i.putExtra("incrq",incrq);
                     i.putExtra("questions",questions);
                     i.putExtra("reponses",reponses);
                     i.putExtra("categorie",categorie);
                     i.putExtra("reussi",reussi);
                     startActivity(i);
                 }
+                finish();
             }
         }
 

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ProjetAndroidTSP</string>
     <!-- Main -->
-    <string name="text1_main">Bonjour %1$s bon jeu ! Tu as joué à %2$d question.</string>
+    <string name="text1_main">Bonjour %1$s bon jeu ! Tu as joué à %2$d parties.</string>
     <string name="text1_main_inconnu">Bonjour étranger.</string>
     <string name="text2_main">Le jeu est un quizz. Le but est d\'aller le plus loin possible dans les questions.</string>
     <string name="bouton1_main">Votre profil</string>
