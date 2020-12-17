@@ -122,6 +122,7 @@ public class VictoireActivity extends AppCompatActivity {
                 break;
             }
         }
+        p.setNb_joue_total(p.getNb_joue_total()+10n);
         profilDAO.modifier(p);
 
         retour.setOnClickListener(new View.OnClickListener() {

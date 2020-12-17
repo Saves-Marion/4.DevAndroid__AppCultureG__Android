@@ -72,24 +72,6 @@
         android:inputType="numberDecimal"
         android:hint="@string/hint3_creer_profil"/>
 
-    <TextView
-        android:id="@+id/pdp_creer_profil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="25dp"
-        android:textColor="@color/colorBleu"
-        android:text="@string/avatar_profil"/>
-
-    <ImageView
-        android:id="@+id/rep_pdp_creer_profil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        tools:srcCompat="@tools:sample/avatars" />
-
     <Button
         android:id="@+id/button_creer_profil"
         android:layout_width="match_parent"

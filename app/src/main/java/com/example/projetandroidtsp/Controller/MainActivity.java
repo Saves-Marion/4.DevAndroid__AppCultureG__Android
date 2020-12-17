@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             b_2.setClickable(true);
-            text_1.setText(String.format(getString(R.string.text1_main), joueur, 0));
+            text_1.setText(String.format(getString(R.string.text1_main), joueur, profilDAO.selectionner(MainActivity.n_joueur).getNb_joue_total()));
         }
     }
 
